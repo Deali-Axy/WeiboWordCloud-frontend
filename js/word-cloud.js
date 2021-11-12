@@ -8,10 +8,11 @@ $(function () {
             Math.round(Math.random() * 255)
         ].join(',') + ')'
     }
+
     function loadWordCloud() {
         let chart = echarts.init(document.querySelector('#chartWordCloud'))
 
-        fetch('http://onecat.sblt.deali.cn:9800/hotspot/weibo_top_keyword')
+        fetch(API)
             .then(res => res.json())
             .then(res => {
                 let originData = res.data.map(item => ({
@@ -31,7 +32,7 @@ $(function () {
                 chart.setOption({
                     series: [{
                         type: 'wordCloud',
-                        shape: 'diamond',
+                        shape: 'star',
                         left: 'center',
                         top: 'center',
                         right: null,
